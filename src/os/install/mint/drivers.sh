@@ -39,10 +39,3 @@ if [ "$installNvidia" = true ]; then
     install_package "NVIDIA Drivers" "nvidia-375"
 
 fi
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-print_in_purple "\n   Miscellaneous\n\n"
-
-install_package "Transmission" "transmission"
-install_package "VLC" "vlc"
