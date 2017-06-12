@@ -85,14 +85,16 @@ fi
 if ! package_is_installed "javac"; then
     add_ppa "webupd8team/java" \
         || print_error "Oracle Java 8 (add PPA)"
+    # "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
+    #     && sudo apt-get install oracle-java8-installer oracle-java8-set-default \
+    #     && sudo update-java-alternatives -s java-8-oracle \
+    #     && sudo rm -f /usr/lib/jvm/default-java \
+    #     && sudo ln -s /usr/lib/jvm/java-8-oracle/ /usr/lib/jvm/default-java" \
     execute \
-        # "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
-        #     && sudo apt-get install oracle-java8-installer oracle-java8-set-default \
-        #     && sudo update-java-alternatives -s java-8-oracle \
-        #     && sudo rm -f /usr/lib/jvm/default-java \
-        #     && sudo ln -s /usr/lib/jvm/java-8-oracle/ /usr/lib/jvm/default-java" \
-        "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
-            && sudo apt-get install oracle-java8-installer \
+        "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections" \
+        "Oracle Java 8 (set defaults)"
+    execute \
+        "sudo apt-get install oracle-java8-installer \
             && sudo update-java-alternatives -s java-8-oracle \
             && sudo apt-get install oracle-java8-set-default" \
         "Oracle Java 8"
