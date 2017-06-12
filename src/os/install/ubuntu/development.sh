@@ -28,7 +28,8 @@ if ! package_is_installed "DbSchema"; then
             && sudo dpkg -i /tmp/dbschema.deb \
             && sudo apt-get install -f \
             && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && sudo echo \"application/xml=DbSchema.desktop\" >> /usr/share/gnome/applications/defaults.list \
+            && touch ~/.local/share/applications/mimeapps.list \
+            && sudo echo \"application/xml=DbSchema.desktop\" >> ~/.local/share/applications/mimeapps.list \
             && rm /tmp/dbschema.deb" \
         "DbSchema"
 fi
@@ -85,7 +86,7 @@ if ! package_is_installed "javac"; then
     add_ppa "webupd8team/java" \
         || print_error "Oracle Java 8 (add PPA)"
     execute \
-        "sudo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
+        "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
             && sudo apt-get install oracle-java8-installer oracle-java8-set-default \
             && sudo update-java-alternatives -s java-8-oracle \
             && sudo rm -f /usr/lib/jvm/default-java \
