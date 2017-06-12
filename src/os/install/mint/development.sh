@@ -8,15 +8,15 @@ print_in_purple "\n   Development\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# if ! package_is_installed "atom"; then
-#
-#     add_ppa "webupd8team/atom" \
-#         || print_error "Atom.IO (add PPA)"
-#
-#     update &> /dev/null \
-#         || print_error "Atom.IO (resync package index files)" \
-#
-# fi
+if ! package_is_installed "atom"; then
+
+    add_ppa "webupd8team/atom" \
+        || print_error "Atom.IO (add PPA)"
+
+    update &> /dev/null \
+        || print_error "Atom.IO (resync package index files)" \
+
+fi
 install_package "Atom.IO" "atom"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -24,12 +24,17 @@ install_package "Atom.IO" "atom"
 # http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb
 if ! package_is_installed "DbSchema"; then
     execute \
+        # "wget -q -O /tmp/dbschema.deb http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb \
+        #     && sudo dpkg -i /tmp/dbschema.deb \
+        #     && sudo apt-get install -f \
+        #     && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
+        #     && touch $HOME/.local/share/applications/mimeapps.list \
+        #     && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
+        #     && rm /tmp/dbschema.deb" \
         "wget -q -O /tmp/dbschema.deb http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb \
             && sudo dpkg -i /tmp/dbschema.deb \
             && sudo apt-get install -f \
             && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && touch $HOME/.local/share/applications/mimeapps.list \
-            && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
             && rm /tmp/dbschema.deb" \
         "DbSchema"
 fi
@@ -37,15 +42,15 @@ fi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
-# if ! package_is_installed "docker-engine"; then
-#     execute \
-#         "sudo apt-get install apt-transport-https ca-certificates \
-#             && sudo echo \"deb https://apt.dockerproject.org/repo ubuntu-xenial main\" | sudo tee /etc/apt/sources.list.d/docker.list \
-#             && sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
-#             && sudo apt-get update \
-#             && sudo apt-get install -f" \
-#         "Docker (add repo)"
-# fi
+if ! package_is_installed "docker-engine"; then
+    execute \
+        "sudo apt-get install apt-transport-https ca-certificates \
+            && sudo echo \"deb https://apt.dockerproject.org/repo ubuntu-xenial main\" | sudo tee /etc/apt/sources.list.d/docker.list \
+            && sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
+            && sudo apt-get update \
+            && sudo apt-get install -f" \
+        "Docker (add repo)"
+fi
 install_package "Docker" "docker-engine"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

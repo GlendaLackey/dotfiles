@@ -19,7 +19,7 @@ if ! package_is_installed "dropbox"; then
         "Dropbox (add repo)"
 fi
 install_package "Dropbox" "dropbox"
-install_package "Dropbox (Nautilus Integration)" "nautilus-dropbox"
+# install_package "Dropbox (Nautilus Integration)" "nautilus-dropbox"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
