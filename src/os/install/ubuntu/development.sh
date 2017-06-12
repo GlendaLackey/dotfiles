@@ -28,8 +28,8 @@ if ! package_is_installed "DbSchema"; then
             && sudo dpkg -i /tmp/dbschema.deb \
             && sudo apt-get install -f \
             && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && touch ~/.local/share/applications/mimeapps.list \
-            && sudo echo \"application/xml=DbSchema.desktop\" >> ~/.local/share/applications/mimeapps.list \
+            && touch $HOME/.local/share/applications/mimeapps.list \
+            && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
             && rm /tmp/dbschema.deb" \
         "DbSchema"
 fi
