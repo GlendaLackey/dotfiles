@@ -44,7 +44,7 @@ if ! package_is_installed "DbSchema"; then
         "sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/" \
         "DbSchema (desktop item)"
     execute \
-        "find /tmp/ -type f -name \"dbschema.deb\" -exec rm {} " \
+        "sudo find /tmp -name \"dbschema.deb\" -type f -exec rm '{}' +" \
         "DbSchema (cleanup)"
 fi
 
