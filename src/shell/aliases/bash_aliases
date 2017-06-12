@@ -24,6 +24,12 @@ alias t="tmux"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+alias bbash=". ~/.bashrc"
+alias dps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\""
+alias dpsa="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\""
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Load OS specific aliases.
 
 . "aliases/$OS/bash_aliases"

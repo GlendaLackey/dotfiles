@@ -1,0 +1,3 @@
+#!/bin/bash
+
+. "keyboard/$OS/bash_keyboard"

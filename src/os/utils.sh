@@ -114,6 +114,14 @@ get_answer() {
     printf "%s" "$REPLY"
 }
 
+is_desktop_installed(){
+    dpkg -s "ubuntu-desktop" &> /dev/null
+}
+
+is_gnome_installed(){
+    dpkg -s "gnome-shell" &> /dev/null
+}
+
 get_os() {
 
     local os=""
@@ -123,10 +131,25 @@ get_os() {
 
     kernelName="$(uname -s)"
 
-    if [ "$kernelName" == "Darwin" ]; then
+    if [ -d "/mnt/c/Windows" ]; then
+        os="windows"
+    elif [ "$kernelName" == "Darwin" ]; then
         os="macos"
     elif [ "$kernelName" == "Linux" ] && [ -e "/etc/lsb-release" ]; then
-        os="ubuntu"
+        os_name="$(lsb_release -i | cut -f2)"
+        if [ "$os_name" == "Ubuntu" ]; then
+            if is_desktop_installed; then
+                os="ubuntu"
+            else
+                if is_gnome_installed; then
+                    os="ubuntu-gnome"
+                else
+                    os="ubuntu-server"
+                fi
+            fi
+        else
+            os="mint"
+        fi
     else
         os="$kernelName"
     fi
@@ -144,9 +167,11 @@ get_os_version() {
 
     os="$(get_os)"
 
-    if [ "$os" == "macos" ]; then
+    if [ "$os" == "windows" ]; then
+        version="10"
+    elif [ "$os" == "macos" ]; then
         version="$(sw_vers -productVersion)"
-    elif [ "$os" == "ubuntu" ]; then
+    elif [ "$os" == "ubuntu" || "$os" == "ubuntu-server" || "$os" == "mint" ]; then
         version="$(lsb_release -d | cut -f2 | cut -d' ' -f2)"
     fi
 

@@ -11,6 +11,7 @@ create_symlinks() {
 
         "shell/aliases/bash_aliases"
         "shell/autocomplete/$(get_os)/bash_autocomplete"
+        "shell/keyboard/bash_keyboard"
         "shell/bash_exports"
         "shell/bash_functions"
         "shell/bash_logout"

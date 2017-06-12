@@ -11,6 +11,7 @@ source_bash_files() {
         "bash_autocomplete"
         "bash_exports"
         "bash_functions"
+        "bash_keyboard"
         "bash_options"
         "bash_prompt"
         "bash.local"  # For local settings that should
@@ -47,8 +48,55 @@ source_bash_files() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# https://coderwall.com/p/tgm2la/auto-attach-or-start-tmux-at-login
+
+init_tmux() {
+  if [[ "$TERM" != "screen" ]] &&
+        [[ "$SSH_CONNECTION" == "" ]]; then
+    # Attempt to discover a detached session and attach
+    # it, else create a new session
+
+    WHOAMI=$(whoami)
+    if tmux has-session -t $WHOAMI 2>/dev/null; then
+        tmux -2 attach-session -t $WHOAMI
+    else
+        tmux -2 new-session -s $WHOAMI
+    fi
+  else
+
+      # One might want to do other things in this case,
+      # here I print my motd, but only on servers where
+      # one exists
+
+      # If inside tmux session then print MOTD
+      MOTD=/etc/motd.tcl
+      if [ -f $MOTD ]; then
+          $MOTD
+      fi
+  fi
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 source_bash_files
 unset -f source_bash_files
+
+# init_tmux
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Update path to include shared binaries
+if [[ ":$PATH:" != *":$/usr/local/sbin:"* ]]; then
+    PATH=$PATH:/usr/local/sbin
+    export PATH
+fi
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set Docker parameters
+if [ -d "/mnt/c/Windows" ]; then
+    export DOCKER_HOST="tcp://127.0.0.1:2375"
+fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

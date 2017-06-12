@@ -20,3 +20,14 @@ set completion-ignore-case on
 # Auto list TAB completions.
 
 set show-all-if-ambiguous off
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Navigate between words on command line.
+
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word

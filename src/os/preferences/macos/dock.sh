@@ -13,6 +13,9 @@ execute "defaults write com.apple.dock autohide -bool true" \
 execute "defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true" \
     "Enable spring loading for all Dock items"
 
+# execute "defaults write com.apple.dock expose-animation-duration -float 0.2" \
+#     "Speed up Mission Control animations"
+
 execute "defaults write com.apple.dock expose-group-by-app -bool false" \
     "Do not group windows by application in Mission Control"
 
@@ -35,7 +38,7 @@ execute "defaults write com.apple.dock show-process-indicators -bool true" \
 execute "defaults write com.apple.dock showhidden -bool true" \
     "Make icons of hidden applications translucent"
 
-execute "defaults write com.apple.dock tilesize -int 60" \
-    "Set icon size"
+# execute "defaults write com.apple.dock tilesize -int 13" \
+#     "Set icon size"
 
 killall "Dock" &> /dev/null

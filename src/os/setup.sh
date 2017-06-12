@@ -8,8 +8,14 @@ declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSIT
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-declare dotfilesDirectory="$HOME/projects/dotfiles"
+declare dotfilesDirectory="$HOME/Setup/dotfiles"
 declare skipQuestions=false
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+declare installSystem76=false
+declare installSystem76Nvidia=false
+declare installNvidia=false
 
 # ----------------------------------------------------------------------
 # | Helper Functions                                                   |
@@ -46,6 +52,7 @@ download() {
 download_dotfiles() {
 
     local tmpFile=""
+    local kernelName=""
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -86,6 +93,27 @@ download_dotfiles() {
                 done
             fi
         done
+
+        kernelName="$(uname -s)"
+
+        if [ "$kernelName" == "Linux" ] && [ -e "/etc/lsb-release" ] && [ ! -d "/mnt/c/Windows" ]; then
+
+            ask_for_confirmation "Install the System76 drivers?"
+            if answer_is_yes; then
+                installSystem76=true
+            fi
+
+            ask_for_confirmation "Install the System76 NVIDIA drivers?"
+            if answer_is_yes; then
+                installSystem76Nvidia=true
+            fi
+
+            ask_for_confirmation "Install the NVIDIA drivers?"
+            if answer_is_yes; then
+                installNvidia=true
+            fi
+
+        fi
 
         printf "\n"
 
@@ -148,8 +176,13 @@ extract() {
 
 verify_os() {
 
+    if [ -d "/mnt/c/Windows" ]; then
+        return 0;
+    fi
+
     declare -r MINIMUM_MACOS_VERSION="10.10"
     declare -r MINIMUM_UBUNTU_VERSION="14.04"
+    declare -r MINIMUM_MINT_VERSION="18.00"
 
     local os_name=""
     local os_version=""
@@ -178,12 +211,24 @@ verify_os() {
 
     elif [ "$os_name" == "Linux" ] && [ -e "/etc/lsb-release" ]; then
 
-        os_version="$(lsb_release -d | cut -f2 | cut -d' ' -f2)"
+        os_name="$(lsb_release -i | cut -f2)"
 
-        if is_supported_version "$os_version" "$MINIMUM_UBUNTU_VERSION"; then
-            return 0
+        if [ "$os_name" == "Ubuntu" ]; then
+            os_version="$(lsb_release -d | cut -f2 | cut -d' ' -f2)"
+            if is_supported_version "$os_version" "$MINIMUM_UBUNTU_VERSION"; then
+                return 0
+            else
+                printf "Sorry, this script is intended only for Ubuntu $MINIMUM_UBUNTU_VERSION"
+            fi
+        elif [ "$os_name" == "LinuxMint" ]; then
+            os_version="$(lsb_release -d | cut -f2 | cut -d' ' -f3)"
+            if is_supported_version "$os_version" "$MINIMUM_MINT_VERSION"; then
+                return 0
+            else
+                printf "Sorry, this script is intended only for Linux Mint $MINIMUM_MINT_VERSION"
+            fi
         else
-            printf "Sorry, this script is intended only for Ubuntu %s+" "$MINIMUM_UBUNTU_VERSION"
+            printf "Sorry, this script is intended only for Ubuntu $MINIMUM_UBUNTU_VERSION and Linux Mint $MINIMUM_MINT_VERSION"
         fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
