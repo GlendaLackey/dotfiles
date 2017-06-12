@@ -94,7 +94,8 @@ if ! package_is_installed "javac"; then
         "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections" \
         "Oracle Java 8 (set defaults)"
     execute \
-        "sudo apt-get install oracle-java8-installer \
+        "sudo apt-get update \
+            && apt-get install oracle-java8-installer \
             && sudo update-java-alternatives -s java-8-oracle \
             && sudo apt-get install oracle-java8-set-default" \
         "Oracle Java 8"
