@@ -35,7 +35,7 @@ if ! package_is_installed "DbSchema"; then
             && sudo dpkg -i /tmp/dbschema.deb \
             && sudo apt-get install -f \
             && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && rm /tmp/dbschema.deb" \
+            && find /tmp/ -type f -name \"dbschema.deb\" -exec rm {} " \
         "DbSchema"
 fi
 
