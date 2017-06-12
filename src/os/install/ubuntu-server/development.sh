@@ -38,7 +38,7 @@ fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-install_package "VirtualBox" "virtualbox"
+# install_package "VirtualBox" "virtualbox"
 # install_package "VirtualBox Extension Pack" "virtualbox-ext-pack"
 # install_package "VirtualBox UI" "virtualbox-qt"
 

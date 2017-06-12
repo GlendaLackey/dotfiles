@@ -10,6 +10,7 @@ update
 upgrade
 
 ./build-essentials.sh
+./misc_tools.sh
 ./git.sh
 
 ./../nvm.sh
@@ -22,7 +23,6 @@ upgrade
 ./development.sh
 ./image_tools.sh
 ./misc.sh
-./misc_tools.sh
 ./../npm.sh
 ./productivity.sh
 ./servers.sh
