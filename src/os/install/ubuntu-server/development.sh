@@ -36,9 +36,11 @@ if ! package_is_installed "docker-compose"; then
         "Docker Compose"
 fi
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_package "VirtualBox" "virtualbox"
+# install_package "VirtualBox Extension Pack" "virtualbox-ext-pack"
+# install_package "VirtualBox UI" "virtualbox-qt"
 
 if package_is_installed "virtualbox"; then
 
