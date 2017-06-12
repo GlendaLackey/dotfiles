@@ -10,15 +10,16 @@ update
 upgrade
 
 ./build-essentials.sh
+./git.sh
+
 ./../nvm.sh
 
-./administation.sh
+./administration.sh
 ./audio.sh
 ./browsers.sh
 ./communications.sh
 ./compression_tools.sh
 ./development.sh
-./git.sh
 ./image_tools.sh
 ./misc.sh
 ./misc_tools.sh
