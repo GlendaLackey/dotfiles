@@ -8,15 +8,15 @@ print_in_purple "\n   Development\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-if ! package_is_installed "atom"; then
-
-    add_ppa "webupd8team/atom" \
-        || print_error "Atom.IO (add PPA)"
-
-    update &> /dev/null \
-        || print_error "Atom.IO (resync package index files)" \
-
-fi
+# if ! package_is_installed "atom"; then
+#
+#     add_ppa "webupd8team/atom" \
+#         || print_error "Atom.IO (add PPA)"
+#
+#     update &> /dev/null \
+#         || print_error "Atom.IO (resync package index files)" \
+#
+# fi
 install_package "Atom.IO" "atom"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -28,8 +28,8 @@ if ! package_is_installed "DbSchema"; then
             && sudo dpkg -i /tmp/dbschema.deb \
             && sudo apt-get install -f \
             && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && touch ~/.local/share/applications/mimeapps.list \
-            && sudo echo \"application/xml=DbSchema.desktop\" >> ~/.local/share/applications/mimeapps.list \
+            && touch $HOME/.local/share/applications/mimeapps.list \
+            && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
             && rm /tmp/dbschema.deb" \
         "DbSchema"
 fi
@@ -37,15 +37,15 @@ fi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
-if ! package_is_installed "docker-engine"; then
-    execute \
-        "sudo apt-get install apt-transport-https ca-certificates \
-            && sudo echo \"deb https://apt.dockerproject.org/repo ubuntu-xenial main\" | sudo tee /etc/apt/sources.list.d/docker.list \
-            && sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
-            && sudo apt-get update \
-            && sudo apt-get install -f" \
-        "Docker (add repo)"
-fi
+# if ! package_is_installed "docker-engine"; then
+#     execute \
+#         "sudo apt-get install apt-transport-https ca-certificates \
+#             && sudo echo \"deb https://apt.dockerproject.org/repo ubuntu-xenial main\" | sudo tee /etc/apt/sources.list.d/docker.list \
+#             && sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
+#             && sudo apt-get update \
+#             && sudo apt-get install -f" \
+#         "Docker (add repo)"
+# fi
 install_package "Docker" "docker-engine"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -93,9 +93,9 @@ if ! package_is_installed "javac"; then
     execute \
         "echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections" \
         "Oracle Java 8 (set defaults)"
-    execute \
-        "sudo apt-get update" \
-        "Oracle Java 8 (sync pakages)"
+    # execute \
+    #     "sudo apt-get update" \
+    #     "Oracle Java 8 (sync pakages)"
     install_package "Oracle Java 8" "oracle-java8-installer"
     execute \
         "sudo update-java-alternatives -s java-8-oracle" \

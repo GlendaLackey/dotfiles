@@ -18,7 +18,7 @@ if ! package_is_installed "dropbox"; then
             && sudo apt-get install -f" \
         "Dropbox (add repo)"
 fi
-install_package "Dropbox" "nautilus"
+install_package "Dropbox" "dropbox"
 install_package "Dropbox (Nautilus Integration)" "nautilus-dropbox"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -32,15 +32,6 @@ install_package "Gnome Control Center" "gnome-control-center"
 install_package "Gnome Online Accounts" "gnome-online-accounts"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-if ! package_is_installed "skype"; then
-    execute \
-        "sudo add-apt-repository \"deb http://archive.canonical.com/ $(lsb_release -sc) partner\" \
-            && sudo dpkg --add-architecture i386 \
-            && sudo apt-get update \
-            && sudo apt-get install -f" \
-        "Skype (add repo)"
-fi
 
 install_package "Skype" "skype"
 
