@@ -95,10 +95,14 @@ if ! package_is_installed "javac"; then
         "Oracle Java 8 (set defaults)"
     execute \
         "sudo apt-get update \
-            && apt-get install oracle-java8-installer \
-            && sudo update-java-alternatives -s java-8-oracle \
-            && sudo apt-get install oracle-java8-set-default" \
+            && apt-get install oracle-java8-installer" \
         "Oracle Java 8"
+    execute \
+        "sudo update-java-alternatives -s java-8-oracle" \
+        "Oracle Java 8 (add to alternates)"
+    execute \
+        "sudo apt-get install oracle-java8-set-default" \
+        "Oracle Java 8 (set default)"
 fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
