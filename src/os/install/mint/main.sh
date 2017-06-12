@@ -22,9 +22,11 @@ upgrade
 ./image_tools.sh
 ./misc.sh
 ./misc_tools.sh
-./productivity.sh
 ./../npm.sh
+./productivity.sh
+./servers.sh
 ./tmux.sh
 ./../vim.sh
 
+./drivers.sh
 ./cleanup.sh
