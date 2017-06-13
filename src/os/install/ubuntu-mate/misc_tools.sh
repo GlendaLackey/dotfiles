@@ -8,6 +8,21 @@ print_in_purple "\n   Miscellaneous Tools\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+if ! package_is_installed "albert"; then
+
+    add_ppa "nilarimogard/webupd8" \
+        || print_error "Albert (add PPA)"
+
+    execute \
+        "sudo apt-get update \
+            && sudo apt-get install -f" \
+        "Albert (resync package index files)"
+
+fi
+install_package "Albert" "albert"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 install_package "Compiz Settings Manager" "compizconfig-settings-manager"
 install_package "Compiz Plugins" "compiz-plugins-extra"
 install_package "cURL" "curl"
