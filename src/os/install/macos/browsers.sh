@@ -24,7 +24,7 @@ brew_install "Chrome" "google-chrome" "caskroom/cask" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-brew_install "Tor Browser" "tor-browser" "caskroom/cask" "cask"
+brew_install "Tor Browser" "torbrowser" "caskroom/cask" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
