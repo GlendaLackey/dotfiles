@@ -141,6 +141,8 @@ get_os() {
 
             if cmd_exists "gnome-shell"; then
                 os="ubuntu-gnome"
+            elif cmd_exists "ubuntu-mate"; then
+                os="ubuntu-mate"
             elif cmd_exists "ubuntu-desktop"; then
                 os="ubuntu"
             else
