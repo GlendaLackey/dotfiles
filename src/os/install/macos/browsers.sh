@@ -24,6 +24,10 @@ brew_install "Chrome" "google-chrome" "caskroom/cask" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+brew_install "Tor Browser" "tor-browser" "caskroom/cask" "cask"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # printf "\n"
 #
 # brew_install "Flash" "flash-npapi" "caskroom/cask" "cask"
