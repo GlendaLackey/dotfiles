@@ -11,7 +11,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./bash.sh
 ./../nvm.sh
 
-./administation.sh
+./administration.sh
 ./audio.sh
 ./browsers.sh
 ./communications.sh
