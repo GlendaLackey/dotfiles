@@ -23,15 +23,29 @@ install_package "Atom.IO" "atom"
 
 # http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb
 if ! package_is_installed "DbSchema"; then
+    # "wget -q -O /tmp/dbschema.deb http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb \
+    #     && sudo dpkg -i /tmp/dbschema.deb \
+    #     && sudo apt-get install -f \
+    #     && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
+    #     && touch $HOME/.local/share/applications/mimeapps.list \
+    #     && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
+    #     && rm /tmp/dbschema.deb" \
+
     execute \
-        "wget -q -O /tmp/dbschema.deb http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb \
-            && sudo dpkg -i /tmp/dbschema.deb \
-            && sudo apt-get install -f \
-            && sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/ \
-            && touch $HOME/.local/share/applications/mimeapps.list \
-            && sudo echo \"application/xml=DbSchema.desktop\" >> $HOME/.local/share/applications/mimeapps.list \
-            && rm /tmp/dbschema.deb" \
+        "wget -q -O /tmp/dbschema.deb http://www.dbschema.com/download/DbSchema_linux_7_5_1.deb" \
+        "DbSchema (fetch installer)"
+    execute \
+        "sudo dpkg -i /tmp/dbschema.deb" \
         "DbSchema"
+    execute \
+        "sudo apt-get install -f" \
+        "DbSchema (dependencies)"
+    execute \
+        "sudo cp /opt/DbSchema/DbSchema.desktop /usr/share/applications/" \
+        "DbSchema (desktop item)"
+    execute \
+        "sudo find /tmp -name \"dbschema.deb\" -type f -exec rm '{}' +" \
+        "DbSchema (cleanup)"
 fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
