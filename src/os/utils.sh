@@ -138,15 +138,15 @@ get_os() {
     elif [ "$kernelName" == "Linux" ] && [ -e "/etc/lsb-release" ]; then
         os_name="$(lsb_release -i | cut -f2)"
         if [ "$os_name" == "Ubuntu" ]; then
-            if is_desktop_installed; then
+
+            if cmd_exists "gnome-shell"; then
+                os="ubuntu-gnome"
+            elif cmd_exists "ubuntu-desktop"; then
                 os="ubuntu"
             else
-                if is_gnome_installed; then
-                    os="ubuntu-gnome"
-                else
-                    os="ubuntu-server"
-                fi
+                os="ubuntu-server"
             fi
+
         else
             os="mint"
         fi

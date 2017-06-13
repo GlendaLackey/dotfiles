@@ -18,7 +18,7 @@ if ! package_is_installed "dropbox"; then
             && sudo apt-get install -f" \
         "Dropbox (add repo)"
 fi
-install_package "Dropbox" "nautilus"
+install_package "Dropbox" "dropbox"
 # install_package "Dropbox (Nautilus Integration)" "nautilus-dropbox"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
