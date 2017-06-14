@@ -8,8 +8,8 @@ print_in_purple "\n   Communications\n\n"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-brew_install "Airdroid" "airdroid" "caskroom/cask" "cask"
-brew_install "Android File Transfer" "android-file-transfer" "caskroom/cask" "cask"
+# brew_install "Airdroid" "airdroid" "caskroom/cask" "cask"
+# brew_install "Android File Transfer" "android-file-transfer" "caskroom/cask" "cask"
 brew_install "Dropbox" "dropbox" "caskroom/cask" "cask"
 brew_install "Filezilla" "filezilla" "caskroom/cask" "cask"
 brew_install "Google Drive" "google-drive" "caskroom/cask" "cask"
