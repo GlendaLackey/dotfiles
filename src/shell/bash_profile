@@ -96,11 +96,14 @@ fi
 # Set Docker parameters
 if [ -d "/mnt/c/Windows" ]; then
     export DOCKER_HOST="tcp://127.0.0.1:2375"
+    PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+    PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
+    export PATH
 fi
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Clear system messages (system copyright notice, the date
-# and time of the last login, the message of the day, etc.).
+    # Clear system messages (system copyright notice, the date
+    # and time of the last login, the message of the day, etc.).
 
-clear
+    clear
