@@ -17,6 +17,7 @@ upgrade
 
 ./administration.sh
 ./compression_tools.sh
+./development.sh
 ./image_tools.sh
 ./../npm.sh
 ./tmux.sh
