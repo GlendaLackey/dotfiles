@@ -143,7 +143,7 @@ get_os() {
                 os="ubuntu-gnome"
             elif cmd_exists "mate-session"; then
                 os="ubuntu-mate"
-            elif cmd_exists "ubuntu-desktop"; then
+            elif is_desktop_installed; then
                 os="ubuntu"
             else
                 os="ubuntu-server"
