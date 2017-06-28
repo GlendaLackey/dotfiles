@@ -95,10 +95,20 @@ fi
 
 # Set Docker parameters
 if [ -d "/mnt/c/Windows" ]; then
+    if [ ! -d "/c" ]; then
+        mkdir /c
+    fi
+    if [ ! -d "/d" ]; then
+        mkdir /d
+    fi
     export DOCKER_HOST="tcp://127.0.0.1:2375"
     PATH="$HOME/bin:$HOME/.local/bin:$PATH"
     PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
     export PATH
+    mount --bind /mnt/c /c
+    if [ -d "/mnt/d" ]; then
+        mount --bind /mnt/d /d
+    fi
 fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
