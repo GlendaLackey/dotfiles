@@ -203,8 +203,8 @@ npminit(){
 }
 
 set-git-public(){
-    git config user.email "fred.lackey@gmail.com"
-    git config user.name "Fred Lackey"
+    git config user.email "glenda.lackey@gmail.com"
+    git config user.name "Glenda Lackey"
 }
 
 backup-source(){

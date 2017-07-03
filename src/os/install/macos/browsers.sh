@@ -43,7 +43,7 @@ brew_install "Tor Browser" "torbrowser" "caskroom/cask" "cask"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # `Safari Technology Preview` requires macOS 10.11.4 or la
-# https://github.com/FredLackey/dotfiles/issues
+# https://github.com/GlendaLackey/dotfiles/issues
 
 # if is_supported_version "$(get_os_version)" "10.11.4"; then
 #     printf "\n"

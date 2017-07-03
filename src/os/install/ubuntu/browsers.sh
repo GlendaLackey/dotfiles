@@ -78,7 +78,7 @@ install_package "Google Chrome" "google-chrome-stable"
 # fi
 
 # Automatically answer `Yes` to the `package configuration` prompt.
-# https://github.com/FredLackey/dotfiles/issues/17
+# https://github.com/GlendaLackey/dotfiles/issues/17
 
 # printf "opera-stable opera-stable/add-deb-source boolean true\n" \
 #     | sudo debconf-set-selections

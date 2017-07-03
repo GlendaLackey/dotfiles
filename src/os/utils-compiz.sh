@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script to easily modify Compbiz plugin settings for current profile
-# Copyright (C) 2017 Fred Lackey - All Rights Reserved
+# Copyright (C) 2017 Glenda Lackey - All Rights Reserved
 # Permission to copy and modify is granted under the MIT license
 # Created: February 1, 2107
 # Revised: Never

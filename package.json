@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FredLackey/dotfiles.git"
+    "url": "git+https://github.com/GlendaLackey/dotfiles.git"
   },
   "keywords": [
     "dotfiles",
@@ -16,15 +16,15 @@
     "development"
   ],
   "author": {
-    "name": "Fred Lackey",
-    "email": "fred.lackey@gmail.com",
-    "url": "http://www.fredlackey.com/"
+    "name": "Glenda Lackey",
+    "email": "glenda.lackey@gmail.com",
+    "url": "http://www.glendalackey.com/"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FredLackey/dotfiles/issues"
+    "url": "https://github.com/GlendaLackey/dotfiles/issues"
   },
-  "homepage": "https://github.com/FredLackey/dotfiles#readme",
+  "homepage": "https://github.com/GlendaLackey/dotfiles#readme",
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.2",

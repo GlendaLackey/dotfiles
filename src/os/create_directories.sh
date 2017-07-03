@@ -13,9 +13,9 @@ create_directories() {
       "$HOME/Setup"
       "$HOME/Source"
       "$HOME/Source/Bitbucket"
-      "$HOME/Source/Bitbucket/FredLackey"
+      "$HOME/Source/Bitbucket/GlendaLackey"
       "$HOME/Source/GitHub"
-      "$HOME/Source/GitHub/FredLackey"
+      "$HOME/Source/GitHub/GlendaLackey"
       "$HOME/Source/Local"
       "$HOME/Temporary"
     )
